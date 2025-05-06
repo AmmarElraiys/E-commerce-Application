@@ -6,24 +6,25 @@ import 'package:e_commerce_application/view/widget/auth/textbutton_login_signup_
 import 'package:e_commerce_application/view/widget/auth/textformfield_widget.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController controllerLoginEmail = TextEditingController();
-  final TextEditingController controllerLoginPassword = TextEditingController();
+class _SignupScreenState extends State<SignupScreen> {
+  final TextEditingController controllerEmail = TextEditingController();
+  final TextEditingController controllerPassword = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool isLoading = false;
 
   @override
   void dispose() {
+    // TODO: implement dispose
     super.dispose();
-    controllerLoginEmail.dispose();
-    controllerLoginPassword.dispose();
+    controllerEmail.dispose();
+    controllerPassword.dispose();
   }
 
   @override
@@ -39,21 +40,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     SizedBox(height: 50),
                     LogoImage(image: "assets/images/shopping.png"),
-                    Container(
-                      alignment: Alignment.center,
-                      padding: EdgeInsets.only(top: 30),
-                      child: Text(
-                        'welecome back',
-                        style: Theme.of(context).textTheme.headlineSmall,
-                      ),
-                    ),
                     SizedBox(height: 60),
-
+                    Text(
+                      'welecome back',
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
                     // Email & Password Fields
                     TextFormFieldWidget(
                       label: "Email",
                       icon: Icons.email,
-                      controller: controllerLoginEmail,
+                      controller: controllerEmail,
                       iconColor: Colors.blue[200],
                       validator: EmailValidator.validate,
                       keyboardType: TextInputType.emailAddress,
@@ -61,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextFormFieldWidget(
                       label: "Password",
                       icon: Icons.lock,
-                      controller: controllerLoginPassword,
+                      controller: controllerPassword,
                       keyboardType: TextInputType.text,
                       validator: PasswordValidator.validate,
                       iconColor: Colors.blue[200],

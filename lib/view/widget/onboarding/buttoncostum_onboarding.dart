@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 class ButtoncostumOnboarding extends StatelessWidget {
   final String title;
   final void Function() onPressed;
+  final TextStyle? style;
   const ButtoncostumOnboarding({
     super.key,
     required this.title,
     required this.onPressed,
+    this.style,
   });
 
   @override
@@ -17,7 +19,7 @@ class ButtoncostumOnboarding extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       onPressed: onPressed,
       color: AppMyColor.primarycolor,
-      child: Text(title),
+      child: Text(title, style: style),
     );
   }
 }
