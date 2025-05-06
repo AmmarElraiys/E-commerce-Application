@@ -1,7 +1,10 @@
+import 'package:e_commerce_application/core/constant/imageassets.dart';
 import 'package:e_commerce_application/core/utils/auth/email_validator.dart';
 import 'package:e_commerce_application/core/utils/auth/password_validator.dart';
+import 'package:e_commerce_application/core/utils/auth/username_validator.dart';
 import 'package:e_commerce_application/view/widget/auth/button_login_signup_widget.dart';
 import 'package:e_commerce_application/view/widget/auth/logo_image.dart';
+import 'package:e_commerce_application/view/widget/auth/text_custom.dart';
 import 'package:e_commerce_application/view/widget/auth/textbutton_login_signup_widget.dart';
 import 'package:e_commerce_application/view/widget/auth/textformfield_widget.dart';
 import 'package:flutter/material.dart';
@@ -36,16 +39,22 @@ class _SignupScreenState extends State<SignupScreen> {
               : Form(
                 key: formKey,
                 child: ListView(
-                  padding: EdgeInsets.all(16),
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 5),
                   children: [
-                    SizedBox(height: 50),
-                    LogoImage(image: "assets/images/shopping.png"),
-                    SizedBox(height: 60),
-                    Text(
-                      'welecome back',
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
+                    SizedBox(height: 5),
+                    LogoImage(image: AppImageassets.logoImage),
+                    TextCustom(title: 'welecome back'),
+                    TextCustom(title: 'Sign Up'),
+
                     // Email & Password Fields
+                    TextFormFieldWidget(
+                      label: "UserName",
+                      icon: Icons.person,
+                      controller: controllerEmail,
+                      iconColor: Colors.blue[200],
+                      validator: UsernameValidator.validate,
+                      keyboardType: TextInputType.emailAddress,
+                    ),
                     TextFormFieldWidget(
                       label: "Email",
                       icon: Icons.email,
@@ -53,6 +62,15 @@ class _SignupScreenState extends State<SignupScreen> {
                       iconColor: Colors.blue[200],
                       validator: EmailValidator.validate,
                       keyboardType: TextInputType.emailAddress,
+                    ),
+                    TextFormFieldWidget(
+                      label: "Password",
+                      icon: Icons.lock,
+                      controller: controllerPassword,
+                      keyboardType: TextInputType.text,
+                      validator: PasswordValidator.validate,
+                      iconColor: Colors.blue[200],
+                      initialObscureText: true,
                     ),
                     TextFormFieldWidget(
                       label: "Password",
@@ -74,26 +92,16 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
 
                     // Login & Google Login
-                    ButtonLoginSignupWidget(text: "Login", onPressed: () {}),
-                    SizedBox(height: 16),
-                    ButtonLoginSignupWidget(
-                      text: "Login with Google",
-                      onPressed: () {},
-                      icon: Image.asset(
-                        "assets/images/search.png",
-                        width: 20,
-                        height: 20,
-                      ),
-                    ),
+                    ButtonLoginSignupWidget(text: "Sign Up", onPressed: () {}),
 
                     // Sign up link
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Don't have an account? "),
+                        Text("I already have an account! "),
                         TextbuttonLoginSignupWidget(
-                          title: "Sign Up",
+                          title: "Sign In",
                           onPressed: () {},
                         ),
                       ],

@@ -17,7 +17,7 @@ class _LogoImageState extends State<LogoImage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 50),
+        const SizedBox(height: 40),
         Container(
           alignment: Alignment.center,
           height: 110,

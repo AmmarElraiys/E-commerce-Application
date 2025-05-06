@@ -1,10 +1,14 @@
+import 'package:e_commerce_application/core/constant/imageassets.dart';
+import 'package:e_commerce_application/core/constant/routes.dart';
 import 'package:e_commerce_application/core/utils/auth/email_validator.dart';
 import 'package:e_commerce_application/core/utils/auth/password_validator.dart';
 import 'package:e_commerce_application/view/widget/auth/button_login_signup_widget.dart';
 import 'package:e_commerce_application/view/widget/auth/logo_image.dart';
+import 'package:e_commerce_application/view/widget/auth/text_custom.dart';
 import 'package:e_commerce_application/view/widget/auth/textbutton_login_signup_widget.dart';
 import 'package:e_commerce_application/view/widget/auth/textformfield_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -37,17 +41,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: ListView(
                   padding: EdgeInsets.all(16),
                   children: [
+                    SizedBox(height: 40),
+                    LogoImage(image: AppImageassets.logoImage),
+                    TextCustom(title: 'welecome back'),
+                    TextCustom(title: 'Sign In '),
+
                     SizedBox(height: 50),
-                    LogoImage(image: "assets/images/shopping.png"),
-                    Container(
-                      alignment: Alignment.center,
-                      padding: EdgeInsets.only(top: 30),
-                      child: Text(
-                        'welecome back',
-                        style: Theme.of(context).textTheme.headlineSmall,
-                      ),
-                    ),
-                    SizedBox(height: 60),
 
                     // Email & Password Fields
                     TextFormFieldWidget(
@@ -84,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       text: "Login with Google",
                       onPressed: () {},
                       icon: Image.asset(
-                        "assets/images/search.png",
+                        AppImageassets.googleImage,
                         width: 20,
                         height: 20,
                       ),
@@ -98,7 +97,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         Text("Don't have an account? "),
                         TextbuttonLoginSignupWidget(
                           title: "Sign Up",
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.offNamed(AppRoutes.signup);
+                          },
                         ),
                       ],
                     ),
