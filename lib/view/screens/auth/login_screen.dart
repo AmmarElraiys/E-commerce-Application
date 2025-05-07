@@ -36,11 +36,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(height: 40),
                     LogoImage(image: AppImageassets.logoImage),
                     TextCustom(
-                      title: 'welecome back',
+                      title: '10'.tr,
                       style: Theme.of(context).textTheme.headlineSmall!,
                     ),
                     TextCustom(
-                      title: 'Sign In ',
+                      title: '11'.tr,
                       style: Theme.of(context).textTheme.headlineSmall!,
                     ),
 
@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     // Email & Password Fields
                     TextFormFieldWidget(
-                      label: "Email",
+                      label: "12".tr,
                       icon: Icons.email,
                       controller: controller.controllerLoginEmail,
                       iconColor: Colors.blue[200],
@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       keyboardType: TextInputType.emailAddress,
                     ),
                     TextFormFieldWidget(
-                      label: "Password",
+                      label: "13".tr,
                       icon: Icons.lock,
                       controller: controller.controllerLoginPassword,
                       keyboardType: TextInputType.text,
@@ -69,16 +69,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextbuttonLoginSignupWidget(
-                        title: "Forget Password?",
-                        onPressed: () {},
+                        title: "14".tr,
+                        onPressed: () {
+                          controller.goToForgetPassword();
+                        },
                       ),
                     ),
 
                     // Login & Google Login
-                    ButtonLoginSignupWidget(text: "Login", onPressed: () {}),
+                    ButtonLoginSignupWidget(text: "15".tr, onPressed: () {}),
                     SizedBox(height: 16),
                     ButtonLoginSignupWidget(
-                      text: "Login with Google",
+                      text: "16".tr,
                       onPressed: () {},
                       icon: Image.asset(
                         AppImageassets.googleImage,
@@ -92,9 +94,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Don't have an account? "),
+                        Text("17".tr),
                         TextbuttonLoginSignupWidget(
-                          title: "Sign Up",
+                          title: "18".tr,
                           onPressed: () {
                             controller.goToSignUp();
                           },

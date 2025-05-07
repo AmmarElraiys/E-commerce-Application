@@ -18,7 +18,10 @@ class SignUpControllerImp extends SignUpController {
   }
 
   @override
-  signUp() {}
+  signUp() {
+    Get.offNamed(AppRoutes.checkemail);
+  }
+
   @override
   void onInit() {
     controllerUserName = TextEditingController();
