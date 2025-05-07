@@ -18,7 +18,7 @@ class SuccessSignup extends StatelessWidget {
     return Scaffold(
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 50, horizontal: 10),
-        child: Column(
+        child: ListView(
           children: [
             TextCustom(
               title: '28'.tr,
@@ -39,7 +39,7 @@ class SuccessSignup extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineMedium!,
               textAlign: TextAlign.center,
             ),
-            Spacer(),
+            SizedBox(height: 150),
             SizedBox(
               width: double.infinity,
               child: ButtonLoginSignupWidget(

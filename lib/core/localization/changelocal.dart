@@ -27,8 +27,8 @@ class ChangelocalController extends GetxController {
       language = Locale("ar");
       appTheme = themeArabic;
     } else {
-      language = Locale(Get.deviceLocale!.languageCode);
       appTheme = themeEnglish;
+      language = Locale(Get.deviceLocale!.languageCode);
     }
     super.onInit();
   }

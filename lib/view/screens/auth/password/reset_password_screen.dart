@@ -17,52 +17,55 @@ class ResetPasswordScreen extends StatelessWidget {
       ResetPasswordControllerImp(),
     );
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 35),
-        child: ListView(
-          children: [
-            TextCustom(
-              title: "37".tr,
-              style: Theme.of(context).textTheme.headlineSmall!,
-            ),
-            LogoImage(image: AppImageassets.logoImage),
-            TextCustom(
-              title: "38".tr,
-              style: Theme.of(context).textTheme.headlineSmall!,
-            ),
-            TextCustom(
-              title: "39".tr,
-              style: Theme.of(context).textTheme.bodySmall!,
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 5),
+      body: Form(
+        key: controller.formstate,
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 35),
+          child: ListView(
+            children: [
+              TextCustom(
+                title: "37".tr,
+                style: Theme.of(context).textTheme.headlineSmall!,
+              ),
+              LogoImage(image: AppImageassets.logoImage),
+              TextCustom(
+                title: "38".tr,
+                style: Theme.of(context).textTheme.headlineSmall!,
+              ),
+              TextCustom(
+                title: "39".tr,
+                style: Theme.of(context).textTheme.bodySmall!,
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 5),
 
-            TextFormFieldWidget(
-              label: "38".tr,
-              icon: Icons.lock,
-              controller: controller.controllerPassword,
-              keyboardType: TextInputType.text,
-              validator: PasswordValidator.validate,
-              iconColor: Colors.blue[200],
-              initialObscureText: true,
-            ),
-            TextFormFieldWidget(
-              label: "40".tr,
-              icon: Icons.lock,
-              controller: controller.controllerRePassword,
-              keyboardType: TextInputType.text,
-              validator: PasswordValidator.validate,
-              iconColor: Colors.blue[200],
-              initialObscureText: true,
-            ),
-            SizedBox(height: 10),
-            ButtonLoginSignupWidget(
-              text: "41".tr,
-              onPressed: () {
-                controller.goToSuccessResetPassword();
-              },
-            ),
-          ],
+              TextFormFieldWidget(
+                label: "38".tr,
+                icon: Icons.lock,
+                controller: controller.controllerPassword,
+                keyboardType: TextInputType.text,
+                validator: PasswordValidator.validate,
+                iconColor: Colors.blue[200],
+                initialObscureText: true,
+              ),
+              TextFormFieldWidget(
+                label: "40".tr,
+                icon: Icons.lock,
+                controller: controller.controllerRePassword,
+                keyboardType: TextInputType.text,
+                validator: PasswordValidator.validate,
+                iconColor: Colors.blue[200],
+                initialObscureText: true,
+              ),
+              SizedBox(height: 10),
+              ButtonLoginSignupWidget(
+                text: "41".tr,
+                onPressed: () {
+                  controller.goToSuccessResetPassword();
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

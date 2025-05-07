@@ -4,24 +4,22 @@ import 'package:get/get.dart';
 
 abstract class ResetPasswordController extends GetxController {
   checkemail();
-  goToVerifiyCode();
   goToSuccessResetPassword();
 }
 
 class ResetPasswordControllerImp extends ResetPasswordController {
+  GlobalKey<FormState> formstate = GlobalKey<FormState>();
   late TextEditingController controllerPassword;
   late TextEditingController controllerRePassword;
 
   @override
   checkemail() {}
 
-  @override
-  goToVerifiyCode() {
-    Get.offNamed(AppRoutes.verifiycode);
-  }
-
   goToSuccessResetPassword() {
-    Get.offNamed(AppRoutes.successresetpass);
+    var formdata = formstate.currentState;
+    if (formdata!.validate()) {
+      Get.offNamed(AppRoutes.successresetpass);
+    }
   }
 
   @override

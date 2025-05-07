@@ -17,42 +17,45 @@ class ForgetPasswordScreen extends StatelessWidget {
       ForgetPasswordControllerImp(),
     );
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 35),
-        child: ListView(
-          children: [
-            TextCustom(
-              title: "32".tr,
-              style: Theme.of(context).textTheme.headlineSmall!,
-            ),
-            LogoImage(image: AppImageassets.logoImage),
-            TextCustom(
-              title: "24".tr,
-              style: Theme.of(context).textTheme.headlineSmall!,
-            ),
-            TextCustom(
-              title: "26".tr,
-              style: Theme.of(context).textTheme.bodySmall!,
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 5),
+      body: Form(
+        key: controller.formstate,
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 35),
+          child: ListView(
+            children: [
+              TextCustom(
+                title: "32".tr,
+                style: Theme.of(context).textTheme.headlineSmall!,
+              ),
+              LogoImage(image: AppImageassets.logoImage),
+              TextCustom(
+                title: "24".tr,
+                style: Theme.of(context).textTheme.headlineSmall!,
+              ),
+              TextCustom(
+                title: "26".tr,
+                style: Theme.of(context).textTheme.bodySmall!,
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 5),
 
-            TextFormFieldWidget(
-              label: "12".tr,
-              icon: Icons.email,
-              controller: controller.controllerEmail,
-              iconColor: Colors.blue[200],
-              validator: EmailValidator.validate,
-              keyboardType: TextInputType.emailAddress,
-            ),
-            SizedBox(height: 10),
-            ButtonLoginSignupWidget(
-              text: "27".tr,
-              onPressed: () {
-                controller.goToVerifiyCode();
-              },
-            ),
-          ],
+              TextFormFieldWidget(
+                label: "12".tr,
+                icon: Icons.email,
+                controller: controller.controllerEmail,
+                iconColor: Colors.blue[200],
+                validator: EmailValidator.validate,
+                keyboardType: TextInputType.emailAddress,
+              ),
+              SizedBox(height: 10),
+              ButtonLoginSignupWidget(
+                text: "27".tr,
+                onPressed: () {
+                  controller.goToVerifiyCode();
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
