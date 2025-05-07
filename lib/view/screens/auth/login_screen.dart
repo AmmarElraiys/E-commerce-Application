@@ -1,5 +1,5 @@
+import 'package:e_commerce_application/controller/auth/login_controller.dart';
 import 'package:e_commerce_application/core/constant/imageassets.dart';
-import 'package:e_commerce_application/core/constant/routes.dart';
 import 'package:e_commerce_application/core/utils/auth/email_validator.dart';
 import 'package:e_commerce_application/core/utils/auth/password_validator.dart';
 import 'package:e_commerce_application/view/widget/auth/button_login_signup_widget.dart';
@@ -18,20 +18,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController controllerLoginEmail = TextEditingController();
-  final TextEditingController controllerLoginPassword = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool isLoading = false;
 
   @override
-  void dispose() {
-    super.dispose();
-    controllerLoginEmail.dispose();
-    controllerLoginPassword.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    LoginControllerImp controller = Get.put(LoginControllerImp());
     return Scaffold(
       body:
           isLoading
@@ -43,8 +35,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     SizedBox(height: 40),
                     LogoImage(image: AppImageassets.logoImage),
-                    TextCustom(title: 'welecome back'),
-                    TextCustom(title: 'Sign In '),
+                    TextCustom(
+                      title: 'welecome back',
+                      style: Theme.of(context).textTheme.headlineSmall!,
+                    ),
+                    TextCustom(
+                      title: 'Sign In ',
+                      style: Theme.of(context).textTheme.headlineSmall!,
+                    ),
 
                     SizedBox(height: 50),
 
@@ -52,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextFormFieldWidget(
                       label: "Email",
                       icon: Icons.email,
-                      controller: controllerLoginEmail,
+                      controller: controller.controllerLoginEmail,
                       iconColor: Colors.blue[200],
                       validator: EmailValidator.validate,
                       keyboardType: TextInputType.emailAddress,
@@ -60,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextFormFieldWidget(
                       label: "Password",
                       icon: Icons.lock,
-                      controller: controllerLoginPassword,
+                      controller: controller.controllerLoginPassword,
                       keyboardType: TextInputType.text,
                       validator: PasswordValidator.validate,
                       iconColor: Colors.blue[200],
@@ -98,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         TextbuttonLoginSignupWidget(
                           title: "Sign Up",
                           onPressed: () {
-                            Get.offNamed(AppRoutes.signup);
+                            controller.goToSignUp();
                           },
                         ),
                       ],

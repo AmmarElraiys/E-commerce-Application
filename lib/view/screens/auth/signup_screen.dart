@@ -1,13 +1,14 @@
-import 'package:e_commerce_application/core/constant/imageassets.dart';
+import 'package:e_commerce_application/controller/auth/sign_up_controller.dart';
 import 'package:e_commerce_application/core/utils/auth/email_validator.dart';
 import 'package:e_commerce_application/core/utils/auth/password_validator.dart';
+import 'package:e_commerce_application/core/utils/auth/pnone_number_validator.dart';
 import 'package:e_commerce_application/core/utils/auth/username_validator.dart';
 import 'package:e_commerce_application/view/widget/auth/button_login_signup_widget.dart';
-import 'package:e_commerce_application/view/widget/auth/logo_image.dart';
 import 'package:e_commerce_application/view/widget/auth/text_custom.dart';
 import 'package:e_commerce_application/view/widget/auth/textbutton_login_signup_widget.dart';
 import 'package:e_commerce_application/view/widget/auth/textformfield_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -17,21 +18,12 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  final TextEditingController controllerEmail = TextEditingController();
-  final TextEditingController controllerPassword = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool isLoading = false;
 
   @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    controllerEmail.dispose();
-    controllerPassword.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    SignUpControllerImp controller = Get.put(SignUpControllerImp());
     return Scaffold(
       body:
           isLoading
@@ -39,18 +31,26 @@ class _SignupScreenState extends State<SignupScreen> {
               : Form(
                 key: formKey,
                 child: ListView(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   children: [
-                    SizedBox(height: 5),
-                    LogoImage(image: AppImageassets.logoImage),
-                    TextCustom(title: 'welecome back'),
-                    TextCustom(title: 'Sign Up'),
+                    SizedBox(height: 50),
+                    TextCustom(
+                      title: 'Sign Up',
+                      style: Theme.of(context).textTheme.headlineSmall!,
+                    ),
+                    TextCustom(
+                      title:
+                          'Welcome to our e-commerce application.We’re glad to have you with us.Have a great day!',
+                      style: Theme.of(context).textTheme.bodyLarge!,
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 20),
 
                     // Email & Password Fields
                     TextFormFieldWidget(
                       label: "UserName",
                       icon: Icons.person,
-                      controller: controllerEmail,
+                      controller: controller.controllerEmail,
                       iconColor: Colors.blue[200],
                       validator: UsernameValidator.validate,
                       keyboardType: TextInputType.emailAddress,
@@ -58,24 +58,23 @@ class _SignupScreenState extends State<SignupScreen> {
                     TextFormFieldWidget(
                       label: "Email",
                       icon: Icons.email,
-                      controller: controllerEmail,
+                      controller: controller.controllerEmail,
                       iconColor: Colors.blue[200],
                       validator: EmailValidator.validate,
                       keyboardType: TextInputType.emailAddress,
                     ),
                     TextFormFieldWidget(
-                      label: "Password",
-                      icon: Icons.lock,
-                      controller: controllerPassword,
-                      keyboardType: TextInputType.text,
-                      validator: PasswordValidator.validate,
+                      label: "Phone",
+                      icon: Icons.phone,
+                      controller: controller.controllerEmail,
                       iconColor: Colors.blue[200],
-                      initialObscureText: true,
+                      validator: PhoneValidator.validate,
+                      keyboardType: TextInputType.emailAddress,
                     ),
                     TextFormFieldWidget(
                       label: "Password",
                       icon: Icons.lock,
-                      controller: controllerPassword,
+                      controller: controller.controllerPassword,
                       keyboardType: TextInputType.text,
                       validator: PasswordValidator.validate,
                       iconColor: Colors.blue[200],
@@ -102,7 +101,9 @@ class _SignupScreenState extends State<SignupScreen> {
                         Text("I already have an account! "),
                         TextbuttonLoginSignupWidget(
                           title: "Sign In",
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.goToLogin();
+                          },
                         ),
                       ],
                     ),
