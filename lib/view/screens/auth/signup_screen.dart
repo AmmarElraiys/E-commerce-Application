@@ -35,12 +35,11 @@ class _SignupScreenState extends State<SignupScreen> {
                   children: [
                     SizedBox(height: 50),
                     TextCustom(
-                      title: 'Sign Up',
+                      title: '18'.tr,
                       style: Theme.of(context).textTheme.headlineSmall!,
                     ),
                     TextCustom(
-                      title:
-                          'Welcome to our e-commerce application.We’re glad to have you with us.Have a great day!',
+                      title: '19'.tr,
                       style: Theme.of(context).textTheme.bodyLarge!,
                       textAlign: TextAlign.center,
                     ),
@@ -48,7 +47,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
                     // Email & Password Fields
                     TextFormFieldWidget(
-                      label: "UserName",
+                      label: "20".tr,
                       icon: Icons.person,
                       controller: controller.controllerEmail,
                       iconColor: Colors.blue[200],
@@ -56,7 +55,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       keyboardType: TextInputType.emailAddress,
                     ),
                     TextFormFieldWidget(
-                      label: "Email",
+                      label: "12".tr,
                       icon: Icons.email,
                       controller: controller.controllerEmail,
                       iconColor: Colors.blue[200],
@@ -64,7 +63,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       keyboardType: TextInputType.emailAddress,
                     ),
                     TextFormFieldWidget(
-                      label: "Phone",
+                      label: "21".tr,
                       icon: Icons.phone,
                       controller: controller.controllerEmail,
                       iconColor: Colors.blue[200],
@@ -72,7 +71,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       keyboardType: TextInputType.emailAddress,
                     ),
                     TextFormFieldWidget(
-                      label: "Password",
+                      label: "13".tr,
                       icon: Icons.lock,
                       controller: controller.controllerPassword,
                       keyboardType: TextInputType.text,
@@ -80,27 +79,23 @@ class _SignupScreenState extends State<SignupScreen> {
                       iconColor: Colors.blue[200],
                       initialObscureText: true,
                     ),
-
-                    // Forget password
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextbuttonLoginSignupWidget(
-                        title: "Forget Password?",
-                        onPressed: () {},
-                      ),
-                    ),
-
+                    SizedBox(height: 20),
                     // Login & Google Login
-                    ButtonLoginSignupWidget(text: "Sign Up", onPressed: () {}),
+                    ButtonLoginSignupWidget(
+                      text: "18".tr,
+                      onPressed: () {
+                        controller.signUp();
+                      },
+                    ),
 
                     // Sign up link
                     SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("I already have an account! "),
+                        Text("22".tr),
                         TextbuttonLoginSignupWidget(
-                          title: "Sign In",
+                          title: "11".tr,
                           onPressed: () {
                             controller.goToLogin();
                           },

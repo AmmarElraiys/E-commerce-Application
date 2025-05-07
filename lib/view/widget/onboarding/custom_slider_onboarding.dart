@@ -1,4 +1,5 @@
 import 'package:e_commerce_application/controller/onboarding_controller.dart';
+import 'package:e_commerce_application/core/constant/color_app.dart';
 import 'package:e_commerce_application/data/datasource/static/static.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
@@ -24,7 +25,11 @@ class CustomSliderOnboarding extends GetView<OnboardingControllerImp> {
               Text(
                 screen.title!,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineSmall,
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: AppMyColor.black,
+                ),
               ),
               Image.asset(
                 screen.image!,
@@ -36,7 +41,7 @@ class CustomSliderOnboarding extends GetView<OnboardingControllerImp> {
                 child: Text(
                   screen.body!,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodySmall,
+                  style: TextStyle(fontSize: 18, color: AppMyColor.grey100),
                 ),
               ),
             ],

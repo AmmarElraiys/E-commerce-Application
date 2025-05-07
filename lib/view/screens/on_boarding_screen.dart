@@ -23,7 +23,7 @@ class OnBoardingScreen extends StatelessWidget {
                 DotcontrollerOnboarding(),
                 SizedBox(height: 15),
                 ButtoncostumOnboarding(
-                  title: "Continue",
+                  title: "23".tr,
                   onPressed: () {
                     controller.next();
                   },
