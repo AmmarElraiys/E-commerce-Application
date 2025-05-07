@@ -2,15 +2,22 @@
 import 'package:flutter/material.dart';
 
 class TextCustom extends StatelessWidget {
+  final TextStyle style;
   final String title;
-  const TextCustom({super.key, required this.title});
+  final TextAlign? textAlign;
+  const TextCustom({
+    super.key,
+    required this.title,
+    required this.style,
+    this.textAlign,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
       padding: EdgeInsets.only(top: 30),
-      child: Text(title, style: Theme.of(context).textTheme.headlineSmall),
+      child: Text(title, style: style, textAlign: textAlign),
     );
   }
 }

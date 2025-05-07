@@ -23,7 +23,7 @@ class _LogoImageState extends State<LogoImage> {
           height: 110,
           width: 110,
           decoration: BoxDecoration(
-            color: Colors.grey[200],
+            color: Colors.blue[200],
             borderRadius: BorderRadius.circular(100),
           ),
           padding: const EdgeInsets.all(10),
