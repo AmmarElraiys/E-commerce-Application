@@ -1,4 +1,5 @@
 import 'package:e_commerce_application/controller/auth/sign_up_controller.dart';
+import 'package:e_commerce_application/core/functions/alertexitapp.dart';
 import 'package:e_commerce_application/core/utils/auth/email_validator.dart';
 import 'package:e_commerce_application/core/utils/auth/password_validator.dart';
 import 'package:e_commerce_application/core/utils/auth/pnone_number_validator.dart';
@@ -23,13 +24,13 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SignUpControllerImp controller = Get.put(SignUpControllerImp());
     return Scaffold(
-      body:
-          isLoading
-              ? Center(child: CircularProgressIndicator())
-              : Form(
-                key: formKey,
+      body: WillPopScope(
+        onWillPop: alertExitApp,
+        child: GetBuilder<SignUpControllerImp>(
+          builder:
+              (controller) => Form(
+                key: controller.formstate,
                 child: ListView(
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   children: [
@@ -49,10 +50,10 @@ class _SignupScreenState extends State<SignupScreen> {
                     TextFormFieldWidget(
                       label: "20".tr,
                       icon: Icons.person,
-                      controller: controller.controllerEmail,
+                      controller: controller.controllerUserName,
                       iconColor: Colors.blue[200],
                       validator: UsernameValidator.validate,
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.name,
                     ),
                     TextFormFieldWidget(
                       label: "12".tr,
@@ -65,10 +66,10 @@ class _SignupScreenState extends State<SignupScreen> {
                     TextFormFieldWidget(
                       label: "21".tr,
                       icon: Icons.phone,
-                      controller: controller.controllerEmail,
+                      controller: controller.controllerPhone,
                       iconColor: Colors.blue[200],
                       validator: PhoneValidator.validate,
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.phone,
                     ),
                     TextFormFieldWidget(
                       label: "13".tr,
@@ -105,6 +106,8 @@ class _SignupScreenState extends State<SignupScreen> {
                   ],
                 ),
               ),
+        ),
+      ),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:e_commerce_application/binding.dart';
 import 'package:e_commerce_application/core/localization/changelocal.dart';
 import 'package:e_commerce_application/core/localization/translation.dart';
 import 'package:e_commerce_application/core/services/services.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       translations: MyTranslation(),
       locale: controller.language,
+      initialBinding: MyBindings(),
       theme: controller.appTheme,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',

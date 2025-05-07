@@ -17,7 +17,7 @@ class OnBoardingScreen extends StatelessWidget {
         children: [
           Expanded(flex: 8, child: CustomSliderOnboarding()),
           Expanded(
-            flex: 2,
+            flex: 1,
             child: Column(
               children: [
                 DotcontrollerOnboarding(),
