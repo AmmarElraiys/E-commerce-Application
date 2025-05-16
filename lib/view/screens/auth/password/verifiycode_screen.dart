@@ -1,4 +1,4 @@
-import 'package:e_commerce_application/controller/auth/password/verifiy_code_controller.dart';
+import 'package:e_commerce_application/controller/password/verifiy_code_controller.dart';
 import 'package:e_commerce_application/core/constant/color_app.dart';
 import 'package:e_commerce_application/core/constant/imageassets.dart';
 import 'package:e_commerce_application/view/widget/auth/logo_image.dart';

@@ -1,4 +1,5 @@
 import 'package:e_commerce_application/controller/auth/sign_up_controller.dart';
+import 'package:e_commerce_application/core/class/handlingdataview.dart';
 import 'package:e_commerce_application/core/functions/alertexitapp.dart';
 import 'package:e_commerce_application/core/utils/auth/email_validator.dart';
 import 'package:e_commerce_application/core/utils/auth/password_validator.dart';
@@ -29,81 +30,84 @@ class _SignupScreenState extends State<SignupScreen> {
         onWillPop: alertExitApp,
         child: GetBuilder<SignUpControllerImp>(
           builder:
-              (controller) => Form(
-                key: controller.formstate,
-                child: ListView(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  children: [
-                    SizedBox(height: 50),
-                    TextCustom(
-                      title: '18'.tr,
-                      style: Theme.of(context).textTheme.headlineSmall!,
-                    ),
-                    TextCustom(
-                      title: '19'.tr,
-                      style: Theme.of(context).textTheme.bodyLarge!,
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(height: 20),
+              (controller) => HandlingdataRequest(
+                statusRequist: controller.statusRequist,
+                widget: Form(
+                  key: controller.formstate,
+                  child: ListView(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    children: [
+                      SizedBox(height: 50),
+                      TextCustom(
+                        title: '18'.tr,
+                        style: Theme.of(context).textTheme.headlineSmall!,
+                      ),
+                      TextCustom(
+                        title: '19'.tr,
+                        style: Theme.of(context).textTheme.bodyLarge!,
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: 20),
 
-                    // Email & Password Fields
-                    TextFormFieldWidget(
-                      label: "20".tr,
-                      icon: Icons.person,
-                      controller: controller.controllerUserName,
-                      iconColor: Colors.blue[200],
-                      validator: UsernameValidator.validate,
-                      keyboardType: TextInputType.name,
-                    ),
-                    TextFormFieldWidget(
-                      label: "12".tr,
-                      icon: Icons.email,
-                      controller: controller.controllerEmail,
-                      iconColor: Colors.blue[200],
-                      validator: EmailValidator.validate,
-                      keyboardType: TextInputType.emailAddress,
-                    ),
-                    TextFormFieldWidget(
-                      label: "21".tr,
-                      icon: Icons.phone,
-                      controller: controller.controllerPhone,
-                      iconColor: Colors.blue[200],
-                      validator: PhoneValidator.validate,
-                      keyboardType: TextInputType.phone,
-                    ),
-                    TextFormFieldWidget(
-                      label: "13".tr,
-                      icon: Icons.lock,
-                      controller: controller.controllerPassword,
-                      keyboardType: TextInputType.text,
-                      validator: PasswordValidator.validate,
-                      iconColor: Colors.blue[200],
-                      initialObscureText: true,
-                    ),
-                    SizedBox(height: 20),
-                    // Login & Google Login
-                    ButtonLoginSignupWidget(
-                      text: "18".tr,
-                      onPressed: () {
-                        controller.signUp();
-                      },
-                    ),
+                      // Email & Password Fields
+                      TextFormFieldWidget(
+                        label: "20".tr,
+                        icon: Icons.person,
+                        controller: controller.controllerUserName,
+                        iconColor: Colors.blue[200],
+                        validator: UsernameValidator.validate,
+                        keyboardType: TextInputType.name,
+                      ),
+                      TextFormFieldWidget(
+                        label: "12".tr,
+                        icon: Icons.email,
+                        controller: controller.controllerEmail,
+                        iconColor: Colors.blue[200],
+                        validator: EmailValidator.validate,
+                        keyboardType: TextInputType.emailAddress,
+                      ),
+                      TextFormFieldWidget(
+                        label: "21".tr,
+                        icon: Icons.phone,
+                        controller: controller.controllerPhone,
+                        iconColor: Colors.blue[200],
+                        validator: PhoneValidator.validate,
+                        keyboardType: TextInputType.phone,
+                      ),
+                      TextFormFieldWidget(
+                        label: "13".tr,
+                        icon: Icons.lock,
+                        controller: controller.controllerPassword,
+                        keyboardType: TextInputType.text,
+                        validator: PasswordValidator.validate,
+                        iconColor: Colors.blue[200],
+                        initialObscureText: true,
+                      ),
+                      SizedBox(height: 20),
+                      // Login & Google Login
+                      ButtonLoginSignupWidget(
+                        text: "18".tr,
+                        onPressed: () {
+                          controller.signUp();
+                        },
+                      ),
 
-                    // Sign up link
-                    SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("22".tr),
-                        TextbuttonLoginSignupWidget(
-                          title: "11".tr,
-                          onPressed: () {
-                            controller.goToLogin();
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
+                      // Sign up link
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("22".tr),
+                          TextbuttonLoginSignupWidget(
+                            title: "11".tr,
+                            onPressed: () {
+                              controller.goToLogin();
+                            },
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
         ),

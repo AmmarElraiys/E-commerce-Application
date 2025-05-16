@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ChangelocalController controller = Get.put(ChangelocalController());
-
     return GetMaterialApp(
       translations: MyTranslation(),
       locale: controller.language,
