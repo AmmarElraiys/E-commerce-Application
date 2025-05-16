@@ -8,16 +8,18 @@ abstract class VerifiyCodeController extends GetxController {
 
 class VerifiyCodeControllerImp extends VerifiyCodeController {
   late String verifiycode;
+  String? email;
   @override
   checCode() {}
 
   @override
   goToResetPassword() {
-    Get.offNamed(AppRoutes.resetpass);
+    Get.offNamed(AppRoutes.resetpass, arguments: {"email": email});
   }
 
   @override
   void onInit() {
+    email = Get.arguments['email'];
     super.onInit();
   }
 }

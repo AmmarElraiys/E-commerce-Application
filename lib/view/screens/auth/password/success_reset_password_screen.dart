@@ -1,10 +1,9 @@
-import 'package:e_commerce_application/controller/auth/password/success_password_controller.dart';
+import 'package:e_commerce_application/controller/password/success_password_controller.dart';
 import 'package:e_commerce_application/core/constant/color_app.dart';
 import 'package:e_commerce_application/view/widget/auth/button_login_signup_widget.dart';
 import 'package:e_commerce_application/view/widget/auth/text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class SuccessResetPassword extends StatelessWidget {
   const SuccessResetPassword({super.key});

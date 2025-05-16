@@ -1,6 +1,5 @@
 import 'package:e_commerce_application/core/functions/checkinternet.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class Test extends StatefulWidget {
   const Test({super.key});
@@ -18,7 +17,7 @@ class _TestState extends State<Test> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    initstate();
     super.initState();
   }
 
