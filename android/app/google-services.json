@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "994730775326",
+    "project_id": "ecommerce-54d42",
+    "storage_bucket": "ecommerce-54d42.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994730775326:android:f46bc357bcff3e41e6ef0f",
+        "android_client_info": {
+          "package_name": "com.ammarelraiys.e_commerce_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs2gPmTkfcDxPoZrp4Cb-nPyypCXYSewI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
