@@ -15,6 +15,7 @@ class ProductStackWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 160,
+      width: 370,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
