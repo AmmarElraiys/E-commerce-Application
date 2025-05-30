@@ -1,17 +1,41 @@
-import 'package:e_commerce_application/core/constant/color_app.dart';
+import 'package:e_commerce_application/core/constant/linkapi.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class CategoriesWidget extends StatelessWidget {
-  final String imageUrl;
-  final String proname;
-  final void Function()? onTap;
+import 'package:e_commerce_application/controller/home/home_controller.dart';
+import 'package:e_commerce_application/core/constant/color_app.dart';
+import 'package:e_commerce_application/data/model/categoies_model.dart';
 
-  const CategoriesWidget({
-    super.key,
-    required this.imageUrl,
-    required this.onTap,
-    required this.proname,
-  });
+class CategoriesWidget extends GetView<HomeControllerImp> {
+  const CategoriesWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 110,
+      width: 70,
+      child: ListView.separated(
+        separatorBuilder: (context, index) => SizedBox(width: 10),
+        itemCount: controller.categories.length,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          return Categories(
+            i: index,
+            categoiesModel: CategoiesModel.fromJson(
+              controller.categories[index],
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class Categories extends GetView<HomeControllerImp> {
+  CategoiesModel categoiesModel;
+  final int? i;
+  Categories({super.key, required this.categoiesModel, required this.i});
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +70,13 @@ class CategoriesWidget extends StatelessWidget {
               ),
             ),
             child: InkWell(
-              onTap: onTap,
+              onTap: () {
+                controller.goToItems(controller.categories, i!);
+              },
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Image.network(
-                  imageUrl,
+                  "${Linkapi.imagesCategories}/${categoiesModel.categoriesImage}",
                   fit: BoxFit.contain,
                   errorBuilder:
                       (context, error, stackTrace) =>
@@ -61,7 +87,7 @@ class CategoriesWidget extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            proname,
+            " ${categoiesModel.categoriesName}",
             style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 14,
