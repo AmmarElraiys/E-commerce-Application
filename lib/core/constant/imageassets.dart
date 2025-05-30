@@ -7,6 +7,7 @@ class AppImageassets {
   static const String logoImage = "$rootImages/shopping.png";
   static const String googleImage = "$rootImages/search.png";
   static const String dressImage = "$rootImages/dress.png";
+  static const String profileImage = "$rootImages/profile.png";
 
   //Lottie
   static const String loading = "$rootLottie/loading.json";

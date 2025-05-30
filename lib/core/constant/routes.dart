@@ -10,4 +10,7 @@ class AppRoutes {
   static const String checkemail = "/checkemail";
   static const String verifiycodesignup = "/verifiycodesignup";
   static const String home = "/home";
+  static const String setting = "/setting";
+  static const String homescreen = "/homescreen";
+  static const String itemsscreen = "/itemsscreen";
 }

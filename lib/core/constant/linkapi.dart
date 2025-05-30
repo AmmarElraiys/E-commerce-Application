@@ -21,4 +21,7 @@ class Linkapi {
 
   //======================================== HomePage ==========================
   static const String homepage = "$linkServer/home.php";
+
+  static const String itemsServer = "$linkServer/items";
+  static const String itemspage = "$itemsServer/items.php";
 }
