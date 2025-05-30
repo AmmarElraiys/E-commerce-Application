@@ -25,10 +25,7 @@ class HomePage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 child: ListView(
                   children: [
-                    TextformfieldSearchWidget(
-                      onTap: () {},
-                      title: "Find Product",
-                    ),
+                    TextformfieldSearchWidget(onTap: () {}, title: "59".tr),
                     SizedBox(height: 30),
                     SizedBox(
                       height: 160,
@@ -40,8 +37,8 @@ class HomePage extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return ProductStackWidget(
-                            title: "🔥 A Summer Surprise",
-                            subTitle: "Cashback 20%",
+                            title: "60".tr,
+                            subTitle: "61".tr,
                           );
                         },
                       ),
@@ -51,7 +48,7 @@ class HomePage extends StatelessWidget {
                     SizedBox(height: 20),
                     SizedBox(
                       child: Text(
-                        "Discounted Goods",
+                        "62".tr,
                         style: Theme.of(context).textTheme.headlineMedium,
                       ),
                     ),

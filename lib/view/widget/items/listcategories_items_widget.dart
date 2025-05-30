@@ -1,4 +1,5 @@
 import 'package:e_commerce_application/controller/items_controller.dart';
+import 'package:e_commerce_application/core/functions/tarnslate_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -59,12 +60,12 @@ class Categories extends GetView<ItemsControllerImp> {
                   child: InkWell(
                     onTap: () {
                       // controller.goToItems(controller.categories, i!);
-                      controller.changecat(i!);
+                      controller.changecat(i!, categoiesModel.categoriesId!);
                     },
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 10),
                       child: Text(
-                        " ${categoiesModel.categoriesName}",
+                        " ${translateDatabase(categoiesModel.categoriesNameAr, categoiesModel.categoriesName)}",
                         style: TextStyle(
                           fontWeight:
                               controller.selectedCat == i
