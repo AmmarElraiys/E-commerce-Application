@@ -1,5 +1,6 @@
 import 'package:e_commerce_application/controller/home/home_controller.dart';
 import 'package:e_commerce_application/core/constant/linkapi.dart';
+import 'package:e_commerce_application/core/functions/tarnslate_database.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce_application/data/model/items_model.dart';
 import 'package:get/get.dart';
@@ -108,7 +109,7 @@ class ItemsCard extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        " ${itemsModel.itemsDesc}",
+                        " ${translateDatabase(itemsModel.itemsDescAr, itemsModel.itemsDesc)}",
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
@@ -136,7 +137,7 @@ class ItemsCard extends StatelessWidget {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            "${itemsModel.itemsDiscount}%",
+                            "${translateDatabase(itemsModel.itemsDiscount, itemsModel.itemsDiscount)}%",
                             style: const TextStyle(
                               color: Colors.white,
 

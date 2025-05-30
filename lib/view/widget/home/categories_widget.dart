@@ -1,4 +1,5 @@
 import 'package:e_commerce_application/core/constant/linkapi.dart';
+import 'package:e_commerce_application/core/functions/tarnslate_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -71,7 +72,11 @@ class Categories extends GetView<HomeControllerImp> {
             ),
             child: InkWell(
               onTap: () {
-                controller.goToItems(controller.categories, i!);
+                controller.goToItems(
+                  controller.categories,
+                  i!,
+                  categoiesModel.categoriesId!,
+                );
               },
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
@@ -87,7 +92,7 @@ class Categories extends GetView<HomeControllerImp> {
           ),
           const SizedBox(height: 8),
           Text(
-            " ${categoiesModel.categoriesName}",
+            " ${translateDatabase(categoiesModel.categoriesNameAr, categoiesModel.categoriesName)}",
             style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 14,

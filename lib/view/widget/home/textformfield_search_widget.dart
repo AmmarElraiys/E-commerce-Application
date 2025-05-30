@@ -16,7 +16,7 @@ class TextformfieldSearchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 16),
+      margin: const EdgeInsets.only(left: 10, right: 10, top: 16),
       child: Row(
         children: [
           Expanded(
