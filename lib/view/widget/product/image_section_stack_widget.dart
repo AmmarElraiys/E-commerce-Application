@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class ImageSectionStackWidget extends StatelessWidget {
   final Object tag;
   final String imageUrl;
+  final IconData? iconfav;
+  final Color colorfav;
   final void Function()? onPressedback;
   final void Function()? onPressedfavorite;
 
@@ -13,6 +15,8 @@ class ImageSectionStackWidget extends StatelessWidget {
     required this.imageUrl,
     required this.onPressedback,
     required this.onPressedfavorite,
+    required this.iconfav,
+    required this.colorfav,
   });
 
   @override
@@ -45,7 +49,7 @@ class ImageSectionStackWidget extends StatelessWidget {
           child: CircleAvatar(
             backgroundColor: Colors.white,
             child: IconButton(
-              icon: const Icon(Icons.favorite_border, color: Colors.red),
+              icon: Icon(iconfav, color: colorfav),
               onPressed: onPressedfavorite,
             ),
           ),

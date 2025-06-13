@@ -25,4 +25,11 @@ class Linkapi {
   //======================================== ItemsPage ==========================
   static const String itemsServer = "$linkServer/items";
   static const String itemspage = "$itemsServer/items.php";
+
+  //======================================== FavoritePage ==========================
+  static const String favoriteServer = "$linkServer/favorite";
+  static const String addfavorite = "$favoriteServer/add.php";
+  static const String removefavorite = "$favoriteServer/remove.php";
+  static const String viewfavorite = "$favoriteServer/view.php";
+  static const String deletefavorite = "$favoriteServer/deletefavorite.php";
 }

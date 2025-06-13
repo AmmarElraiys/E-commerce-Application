@@ -25,7 +25,13 @@ class HomePage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 child: ListView(
                   children: [
-                    TextformfieldSearchWidget(onTap: () {}, title: "59".tr),
+                    TextformfieldSearchWidget(
+                      onTap: () {},
+                      title: "59".tr,
+                      onTapfav: () {
+                        controller.goToMyFavorite();
+                      },
+                    ),
                     SizedBox(height: 30),
                     SizedBox(
                       height: 160,

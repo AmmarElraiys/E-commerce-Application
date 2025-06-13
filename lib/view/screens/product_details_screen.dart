@@ -1,3 +1,4 @@
+import 'package:e_commerce_application/controller/favorite_controller.dart';
 import 'package:e_commerce_application/controller/product_details_controller.dart';
 import 'package:e_commerce_application/core/constant/color_app.dart';
 import 'package:e_commerce_application/core/constant/linkapi.dart';
@@ -24,12 +25,44 @@ class ProductDetailsScreen extends StatelessWidget {
         child: Column(
           children: [
             // Üst görsel ve geri tuşu
-            ImageSectionStackWidget(
-              tag: controller.itemsModel.itemsId.toString(),
-              imageUrl:
-                  "${Linkapi.imagesItems}/${controller.itemsModel.itemsImage}",
-              onPressedback: () => Get.back(),
-              onPressedfavorite: () {},
+            GetBuilder<FavoriteController>(
+              builder:
+                  (controllerfav) => ImageSectionStackWidget(
+                    tag: controller.itemsModel.itemsId.toString(),
+                    imageUrl:
+                        "${Linkapi.imagesItems}/${controller.itemsModel.itemsImage}",
+                    onPressedback: () => Get.back(),
+                    onPressedfavorite: () {
+                      if (controllerfav.isFavorite[controller
+                              .itemsModel
+                              .itemsId] ==
+                          "1") {
+                        controllerfav.setFavorite(
+                          controller.itemsModel.itemsId,
+                          "0",
+                        );
+                        controllerfav.removeFavorite(
+                          controller.itemsModel.itemsId!,
+                        );
+                      } else {
+                        controllerfav.setFavorite(
+                          controller.itemsModel.itemsId,
+                          "1",
+                        );
+                        controllerfav.addFavorite(
+                          controller.itemsModel.itemsId!,
+                        );
+                      }
+                    },
+                    iconfav:
+                        controllerfav.isFavorite[controller
+                                    .itemsModel
+                                    .itemsId] ==
+                                "1"
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                    colorfav: Colors.red,
+                  ),
             ),
 
             // Ürün detayları

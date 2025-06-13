@@ -1,20 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_commerce_application/controller/favorite_controller.dart';
-import 'package:e_commerce_application/controller/items_controller.dart';
+import 'package:e_commerce_application/controller/myfavorite_controller.dart';
+import 'package:e_commerce_application/core/constant/color_app.dart';
 import 'package:e_commerce_application/core/constant/linkapi.dart';
 import 'package:e_commerce_application/core/functions/tarnslate_database.dart';
-import 'package:e_commerce_application/data/model/items_model.dart';
+
+import 'package:e_commerce_application/data/model/myfavorite_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ItemGridWidget extends GetView<ItemsControllerImp> {
-  final ItemsModel itemsModel;
+class MyFavoriteItemGridWidget extends GetView<MyfavoriteControllerImp> {
+  final MyFavoriteModel myFavoriteModel;
   final int index;
   // final bool active;
 
-  const ItemGridWidget({
+  const MyFavoriteItemGridWidget({
     super.key,
-    required this.itemsModel,
+    required this.myFavoriteModel,
     required this.index,
   });
 
@@ -22,7 +23,7 @@ class ItemGridWidget extends GetView<ItemsControllerImp> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        controller.goToProductDetailsPage(itemsModel);
+        // controllerItemsControllerImp.goToProductDetailsPage(itemsModel!);
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 250),
@@ -48,7 +49,8 @@ class ItemGridWidget extends GetView<ItemsControllerImp> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: CachedNetworkImage(
-                    imageUrl: "${Linkapi.imagesItems}/${itemsModel.itemsImage}",
+                    imageUrl:
+                        "${Linkapi.imagesItems}/${myFavoriteModel.itemsImage}",
                     height: 130,
                     width: double.infinity,
                     fit: BoxFit.contain,
@@ -63,8 +65,8 @@ class ItemGridWidget extends GetView<ItemsControllerImp> {
               const SizedBox(height: 10),
               Text(
                 translateDatabase(
-                  itemsModel.itemsNameAr!,
-                  itemsModel.itemsName!,
+                  myFavoriteModel.itemsNameAr!,
+                  myFavoriteModel.itemsName!,
                 ),
                 style: Theme.of(
                   context,
@@ -75,8 +77,8 @@ class ItemGridWidget extends GetView<ItemsControllerImp> {
               const SizedBox(height: 4),
               Text(
                 translateDatabase(
-                  itemsModel.itemsDescAr!,
-                  itemsModel.itemsDesc!,
+                  myFavoriteModel.itemsDescAr!,
+                  myFavoriteModel.itemsDesc!,
                 ),
                 style: Theme.of(
                   context,
@@ -90,9 +92,17 @@ class ItemGridWidget extends GetView<ItemsControllerImp> {
                 children: [
                   Row(
                     children: [
-                      const Icon(Icons.star, color: Colors.amber, size: 16),
+                      const Icon(Icons.star, color: AppMyColor.amber, size: 16),
                       const SizedBox(width: 4),
-                      Text("3.5", style: Theme.of(context).textTheme.bodySmall),
+                      Text(
+                        "3.5",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontFamily: "stau",
+                          fontWeight: FontWeight.bold,
+                          color: AppMyColor.grey,
+                        ),
+                      ),
                     ],
                   ),
                   Row(
@@ -109,40 +119,28 @@ class ItemGridWidget extends GetView<ItemsControllerImp> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "\$${itemsModel.itemsPrice}",
+                    "\$${myFavoriteModel.itemsPrice}",
                     style: const TextStyle(
                       fontSize: 16,
                       fontFamily: "stau",
                       fontWeight: FontWeight.bold,
-                      color: Colors.green,
+                      color: AppMyColor.green,
                     ),
                   ),
-                  GetBuilder<FavoriteController>(
-                    builder:
-                        (controller) => Container(
-                          decoration: BoxDecoration(
-                            color: Colors.red.withOpacity(0.1),
-                            shape: BoxShape.circle,
-                          ),
-                          child: IconButton(
-                            onPressed: () {
-                              if (controller.isFavorite[itemsModel.itemsId] ==
-                                  "1") {
-                                controller.setFavorite(itemsModel.itemsId, "0");
-                                controller.removeFavorite(itemsModel.itemsId!);
-                              } else {
-                                controller.setFavorite(itemsModel.itemsId, "1");
-                                controller.addFavorite(itemsModel.itemsId!);
-                              }
-                            },
-                            icon: Icon(
-                              controller.isFavorite[itemsModel.itemsId] == "1"
-                                  ? Icons.favorite
-                                  : Icons.favorite_border,
-                              color: Colors.red,
-                            ),
-                          ),
-                        ),
+
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.red.withOpacity(0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: IconButton(
+                      onPressed: () {
+                        controller.deleteFromFavorite(
+                          myFavoriteModel.favoriteId!,
+                        );
+                      },
+                      icon: Icon(Icons.delete_outline, color: Colors.red),
+                    ),
                   ),
                 ],
               ),
