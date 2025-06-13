@@ -1,4 +1,5 @@
 import 'package:e_commerce_application/core/class/statusrequist.dart';
+import 'package:e_commerce_application/core/constant/routes.dart';
 import 'package:e_commerce_application/core/functions/handlingdata.dart';
 import 'package:e_commerce_application/core/services/services.dart';
 import 'package:e_commerce_application/data/datasource/remote/items_data.dart';
@@ -10,6 +11,7 @@ abstract class ItemsController extends GetxController {
   changecat(int val, String catval);
   getItems(String catogryid);
   goToProductDetailsPage(ItemsModel itemsModel);
+  goToMyFavorite();
 }
 
 class ItemsControllerImp extends ItemsController {
@@ -66,5 +68,10 @@ class ItemsControllerImp extends ItemsController {
   @override
   goToProductDetailsPage(itemsModel) {
     Get.toNamed('productdetails', arguments: {"itemsmodel": itemsModel});
+  }
+
+  @override
+  goToMyFavorite() {
+    Get.toNamed(AppRoutes.myfavorite);
   }
 }

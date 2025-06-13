@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 
 class TextformfieldSearchWidget extends StatelessWidget {
   final void Function()? onTap;
+  final void Function()? onTapfav;
   final void Function()? onTapSearch;
   final String title;
   const TextformfieldSearchWidget({
     super.key,
     required this.onTap,
+    required this.onTapfav,
     required this.title,
     this.onTapSearch,
   });
@@ -48,7 +50,7 @@ class TextformfieldSearchWidget extends StatelessWidget {
             color: AppMyColor.white,
             child: InkWell(
               borderRadius: BorderRadius.circular(12),
-              onTap: onTap,
+              onTap: onTapfav,
               child: Container(
                 width: 55,
                 height: 55,

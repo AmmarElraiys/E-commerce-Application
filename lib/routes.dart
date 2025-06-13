@@ -13,6 +13,7 @@ import 'package:e_commerce_application/view/screens/auth/verifiycode_signup_scre
 import 'package:e_commerce_application/view/screens/home/home_screen.dart';
 import 'package:e_commerce_application/view/screens/items_screen.dart';
 import 'package:e_commerce_application/view/screens/language.dart';
+import 'package:e_commerce_application/view/screens/myfavorite_screen.dart';
 import 'package:e_commerce_application/view/screens/on_boarding_screen.dart';
 import 'package:e_commerce_application/view/screens/product_details_screen.dart';
 import 'package:get/get.dart';
@@ -46,4 +47,5 @@ List<GetPage<dynamic>>? routes = [
     name: AppRoutes.productdetails,
     page: () => const ProductDetailsScreen(),
   ),
+  GetPage(name: AppRoutes.myfavorite, page: () => const MyfavoriteScreen()),
 ];

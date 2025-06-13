@@ -15,13 +15,19 @@ class ItemsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(ItemsControllerImp());
+    ItemsControllerImp controller = Get.put(ItemsControllerImp());
     FavoriteController favoriteController = Get.put(FavoriteController());
     return Container(
       child: Scaffold(
         body: ListView(
           children: [
-            TextformfieldSearchWidget(onTap: () {}, title: "63".tr),
+            TextformfieldSearchWidget(
+              onTap: () {},
+              title: "63".tr,
+              onTapfav: () {
+                controller.goToMyFavorite();
+              },
+            ),
             SizedBox(height: 30),
             ListcategoriesItemsWidget(),
             GetBuilder<ItemsControllerImp>(
