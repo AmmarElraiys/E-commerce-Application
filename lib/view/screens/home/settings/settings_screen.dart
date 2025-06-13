@@ -1,4 +1,5 @@
 import 'package:e_commerce_application/controller/settings/settings_controller.dart';
+import 'package:e_commerce_application/core/constant/color_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -36,22 +37,76 @@ class SettingsScreen extends GetView<SettingsController> {
             children: [
               const SizedBox(height: 16),
               ListTile(
-                leading: const Icon(Icons.language, color: Colors.blueAccent),
+                leading: const Icon(
+                  Icons.language,
+                  color: AppMyColor.primarycolor,
+                ),
                 title: Text('Language'.tr, style: theme.textTheme.titleMedium),
-                trailing: DropdownButton<String>(
-                  value: Get.locale?.languageCode,
-                  underline: const SizedBox(),
-                  items: const [
-                    DropdownMenuItem(value: 'en', child: Text('English')),
-                    DropdownMenuItem(value: 'ar', child: Text('العربية')),
-                  ],
-                  onChanged: (langCode) {
-                    if (langCode == "en") {
-                      controller.changeLang("en");
-                    } else {
-                      controller.changeLang("ar");
-                    }
-                  },
+                trailing: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  decoration: BoxDecoration(
+                    color: AppMyColor.primarycolor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: AppMyColor.primarycolor),
+                  ),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      value: Get.locale?.languageCode,
+                      icon: const Icon(
+                        Icons.arrow_drop_down,
+                        color: AppMyColor.primarycolor,
+                      ),
+                      dropdownColor: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      style: const TextStyle(color: Colors.black),
+                      items: const [
+                        DropdownMenuItem(
+                          value: 'en',
+                          child: Row(
+                            children: [
+                              Text('🇺🇸 ', style: TextStyle(fontSize: 18)),
+                              SizedBox(width: 8),
+                              Text('English'),
+                            ],
+                          ),
+                        ),
+                        DropdownMenuItem(
+                          value: 'ar',
+                          child: Row(
+                            children: [
+                              Text('🇸🇦 ', style: TextStyle(fontSize: 18)),
+                              SizedBox(width: 8),
+                              Text('العربية'),
+                            ],
+                          ),
+                        ),
+                      ],
+                      // Seçili öğe kutusunda gösterilecek widgetlar:
+                      selectedItemBuilder: (BuildContext context) {
+                        return const [
+                          // 'en' seçiliyse kutuda bu gösterilecek:
+                          Row(
+                            children: [
+                              Text('🇺🇸 ', style: TextStyle(fontSize: 18)),
+                              SizedBox(width: 8),
+                              Text('English'),
+                            ],
+                          ),
+                          // 'ar' seçiliyse kutuda bu gösterilecek:
+                          Row(
+                            children: [
+                              Text('🇸🇦 ', style: TextStyle(fontSize: 18)),
+                              SizedBox(width: 8),
+                              Text('العربية'),
+                            ],
+                          ),
+                        ];
+                      },
+                      onChanged: (langCode) {
+                        controller.changeLang(langCode!);
+                      },
+                    ),
+                  ),
                 ),
               ),
               const Divider(indent: 16, endIndent: 16),

@@ -1,12 +1,15 @@
 import 'package:e_commerce_application/core/class/statusrequist.dart';
 import 'package:e_commerce_application/core/functions/handlingdata.dart';
+import 'package:e_commerce_application/core/services/services.dart';
 import 'package:e_commerce_application/data/datasource/remote/items_data.dart';
+import 'package:e_commerce_application/data/model/items_model.dart';
 import 'package:get/get.dart';
 
 abstract class ItemsController extends GetxController {
   intialData();
   changecat(int val, String catval);
   getItems(String catogryid);
+  goToProductDetailsPage(ItemsModel itemsModel);
 }
 
 class ItemsControllerImp extends ItemsController {
@@ -16,6 +19,7 @@ class ItemsControllerImp extends ItemsController {
   String? catid;
   StatusRequist statusRequist = StatusRequist.none;
   int? selectedCat;
+  MyServices myServices = Get.find();
 
   @override
   intialData() {
@@ -43,7 +47,10 @@ class ItemsControllerImp extends ItemsController {
   getItems(catogryid) async {
     data.clear();
     statusRequist = StatusRequist.loading;
-    var response = await itemsData.getData(catogryid);
+    var response = await itemsData.getData(
+      catogryid,
+      myServices.sharedPreferences.getString("id")!,
+    );
     print("=============================== $response");
     statusRequist = handlingData(response);
     if (StatusRequist.success == statusRequist) {
@@ -54,5 +61,10 @@ class ItemsControllerImp extends ItemsController {
       }
     }
     update();
+  }
+
+  @override
+  goToProductDetailsPage(itemsModel) {
+    Get.toNamed('productdetails', arguments: {"itemsmodel": itemsModel});
   }
 }

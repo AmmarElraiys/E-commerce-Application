@@ -54,6 +54,26 @@ class TextformfieldSearchWidget extends StatelessWidget {
                 height: 55,
                 alignment: Alignment.center,
                 child: Icon(
+                  Icons.favorite_border,
+                  size: 28,
+                  color: AppMyColor.grey_700,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(width: 10),
+          Material(
+            elevation: 2,
+            borderRadius: BorderRadius.circular(12),
+            color: AppMyColor.white,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(12),
+              onTap: onTap,
+              child: Container(
+                width: 55,
+                height: 55,
+                alignment: Alignment.center,
+                child: Icon(
                   Icons.notifications_active_outlined,
                   size: 28,
                   color: AppMyColor.grey_700,

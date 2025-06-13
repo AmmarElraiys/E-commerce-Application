@@ -14,6 +14,7 @@ import 'package:e_commerce_application/view/screens/home/home_screen.dart';
 import 'package:e_commerce_application/view/screens/items_screen.dart';
 import 'package:e_commerce_application/view/screens/language.dart';
 import 'package:e_commerce_application/view/screens/on_boarding_screen.dart';
+import 'package:e_commerce_application/view/screens/product_details_screen.dart';
 import 'package:get/get.dart';
 
 List<GetPage<dynamic>>? routes = [
@@ -22,7 +23,7 @@ List<GetPage<dynamic>>? routes = [
     page: () => const Language(),
     middlewares: [Mymiddleware()],
   ),
-  // GetPage(name: "/", page: () => const TestView()),
+  // GetPage(name: "/", page: () => const ProductDetailsScreen()),
   GetPage(name: AppRoutes.login, page: () => const LoginScreen()),
   GetPage(name: AppRoutes.onBoarding, page: () => const OnBoardingScreen()),
   GetPage(name: AppRoutes.signup, page: () => const SignupScreen()),
@@ -40,4 +41,9 @@ List<GetPage<dynamic>>? routes = [
   ),
   GetPage(name: AppRoutes.home, page: () => const HomeScreen()),
   GetPage(name: AppRoutes.itemsscreen, page: () => const ItemsScreen()),
+
+  GetPage(
+    name: AppRoutes.productdetails,
+    page: () => const ProductDetailsScreen(),
+  ),
 ];

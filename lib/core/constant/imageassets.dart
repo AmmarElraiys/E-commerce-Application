@@ -14,4 +14,5 @@ class AppImageassets {
   static const String nodataloading = "$rootLottie/nodataloading.json";
   static const String serviceloading = "$rootLottie/serviceloading.json";
   static const String offlineloading = "$rootLottie/oflineloading.json";
+  static const String language = "$rootLottie/lange.json";
 }

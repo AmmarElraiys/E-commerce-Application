@@ -1,12 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce_application/controller/favorite_controller.dart';
+import 'package:e_commerce_application/controller/items_controller.dart';
 import 'package:e_commerce_application/core/constant/linkapi.dart';
 import 'package:e_commerce_application/core/functions/tarnslate_database.dart';
 import 'package:e_commerce_application/data/model/items_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class ItemGridWidget extends StatelessWidget {
+class ItemGridWidget extends GetView<ItemsControllerImp> {
   final ItemsModel itemsModel;
   final int index;
+  // final bool active;
 
   const ItemGridWidget({
     super.key,
@@ -18,7 +22,7 @@ class ItemGridWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Ürün detay sayfasına yönlendirme yapılabilir
+        controller.goToProductDetailsPage(itemsModel);
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 250),
@@ -113,20 +117,30 @@ class ItemGridWidget extends StatelessWidget {
                       color: Colors.green,
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.red.withOpacity(0.1),
-                      shape: BoxShape.circle,
-                    ),
-                    child: IconButton(
-                      onPressed: () {
-                        // Favorilere ekle
-                      },
-                      icon: const Icon(
-                        Icons.favorite_border,
-                        color: Colors.red,
-                      ),
-                    ),
+                  GetBuilder<FavoriteController>(
+                    builder:
+                        (controller) => Container(
+                          decoration: BoxDecoration(
+                            color: Colors.red.withOpacity(0.1),
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            onPressed: () {
+                              if (controller.isFavorite[itemsModel.itemsId] ==
+                                  "1") {
+                                controller.setFavorite(itemsModel.itemsId, "0");
+                              } else {
+                                controller.setFavorite(itemsModel.itemsId, "1");
+                              }
+                            },
+                            icon: Icon(
+                              controller.isFavorite[itemsModel.itemsId] == "1"
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ),
                   ),
                 ],
               ),
