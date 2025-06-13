@@ -23,7 +23,7 @@ class OnboardingControllerImp extends OnboardingController {
     } else {
       pageController.animateToPage(
         pageIndex,
-        duration: Duration(milliseconds: 900),
+        duration: Duration(milliseconds: 100),
         curve: Curves.easeInOut,
       );
     }

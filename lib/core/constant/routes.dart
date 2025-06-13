@@ -13,4 +13,5 @@ class AppRoutes {
   static const String setting = "/setting";
   static const String homescreen = "/homescreen";
   static const String itemsscreen = "/itemsscreen";
+  static const String productdetails = "/productdetails";
 }
