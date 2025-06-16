@@ -88,6 +88,7 @@ class ItemsCard extends StatelessWidget {
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
+                    fontFamily: "statu",
                     fontSize: 19,
                   ),
                 ),
@@ -143,6 +144,7 @@ class ItemsCard extends StatelessWidget {
 
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
+                              fontFamily: "statu",
                             ),
                           ),
                         ],

@@ -122,7 +122,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     const SizedBox(height: 25),
 
                     // Açıklama
-                    TextWidget(titel: "Description"),
+                    TextWidget(titel: "76".tr),
                     const SizedBox(height: 8),
                     TextWidget(
                       titel: translateDatabase(
@@ -132,7 +132,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
 
                     const SizedBox(height: 30),
-                    TextWidget(titel: "Choose Color"),
+                    TextWidget(titel: "77".tr),
 
                     const SizedBox(height: 12),
                     Row(
@@ -157,11 +157,11 @@ class ProductDetailsScreen extends StatelessWidget {
 
       // Sepete Ekle Butonu
       bottomNavigationBar: TocartButtonWidget(
-        title: 'Add to Cart',
+        title: '78'.tr,
         onPressed: () {
           Get.snackbar(
-            "Added to Cart",
-            "The product has been successfully added.",
+            "79".tr,
+            "80".tr,
             snackPosition: SnackPosition.BOTTOM,
             backgroundColor: AppMyColor.primarycolor,
             colorText: Colors.white,

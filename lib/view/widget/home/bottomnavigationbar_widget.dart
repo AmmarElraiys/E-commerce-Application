@@ -53,8 +53,9 @@ class BottomnavigationbarWidget extends StatelessWidget {
             Text(
               title,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 10,
                 fontWeight: FontWeight.w600,
+                overflow: TextOverflow.ellipsis,
                 color: active ? AppMyColor.primarycolor : AppMyColor.black,
               ),
             ),

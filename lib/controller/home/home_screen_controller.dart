@@ -17,7 +17,7 @@ class HomeScreenControllerImp extends HomeScreenController {
     SettingsScreen(),
     ProfileScreen(),
   ];
-  List titlelistPage = ["Home", "categories", "settings", "profile"];
+  List titlelistPage = ["64".tr, "65".tr, "66".tr, "67".tr];
   List<IconData> iconListPage = [
     Icons.home,
     Icons.category,

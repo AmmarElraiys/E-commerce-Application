@@ -4,7 +4,6 @@ import 'package:e_commerce_application/core/functions/handlingdata.dart';
 import 'package:e_commerce_application/core/services/services.dart';
 import 'package:e_commerce_application/data/datasource/remote/favorite_data.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class FavoriteController extends GetxController {
@@ -34,8 +33,8 @@ class FavoriteController extends GetxController {
       if (response['status'] == "success") {
         // data.addAll(response['data']);
         Get.snackbar(
-          "Success",
-          "Item added to favorites",
+          "28".tr,
+          "75".tr,
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: AppMyColor.green, // yeşil
           colorText: AppMyColor.white,
@@ -63,8 +62,8 @@ class FavoriteController extends GetxController {
       if (response['status'] == "success") {
         // data.addAll(response['data']);.
         Get.snackbar(
-          "Success",
-          "Item removed from favorites",
+          "28".tr,
+          "74".tr,
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: AppMyColor.red, // yeşil
           colorText: AppMyColor.white,

@@ -11,20 +11,20 @@ class BottomnavigatonbarHome extends GetView<HomeScreenControllerImp> {
     return BottomAppBar(
       height: 80,
       shape: CircularNotchedRectangle(),
-      notchMargin: 15,
+      notchMargin: 13,
       child: Row(
         children: [
           ...List.generate(controller.listPage.length + 1, (index) {
             int i = index > 2 ? index - 1 : index;
             return index == 2
-                ? Spacer()
+                ? const Expanded(child: SizedBox()) // fab boşluğu için
                 : BottomnavigationbarWidget(
                   onPressed: () {
                     controller.changePage(i);
                   },
                   title: controller.titlelistPage[i],
                   icon: controller.iconListPage[i],
-                  active: controller.currentPage == i ? true : false,
+                  active: controller.currentPage == i,
                 );
           }),
         ],
