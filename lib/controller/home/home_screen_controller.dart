@@ -1,3 +1,4 @@
+import 'package:e_commerce_application/core/constant/routes.dart';
 import 'package:e_commerce_application/view/screens/categories/categories_screen.dart';
 import 'package:e_commerce_application/view/screens/home/home.dart';
 import 'package:e_commerce_application/view/screens/home/profile/profile_screen.dart';
@@ -7,6 +8,7 @@ import 'package:get/get.dart';
 
 abstract class HomeScreenController extends GetxController {
   changePage(int index);
+  goToCart();
 }
 
 class HomeScreenControllerImp extends HomeScreenController {
@@ -29,5 +31,10 @@ class HomeScreenControllerImp extends HomeScreenController {
   changePage(int index) {
     currentPage = index;
     update();
+  }
+
+  @override
+  goToCart() {
+    Get.toNamed(AppRoutes.myCart);
   }
 }

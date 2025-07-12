@@ -1,33 +1,23 @@
 import 'package:e_commerce_application/core/class/statusrequist.dart';
 import 'package:e_commerce_application/core/constant/color_app.dart';
-import 'package:e_commerce_application/core/constant/routes.dart';
 import 'package:e_commerce_application/core/functions/handlingdata.dart';
 import 'package:e_commerce_application/core/services/services.dart';
 import 'package:e_commerce_application/data/datasource/remote/cart_dart.dart';
 import 'package:e_commerce_application/data/model/cart_model.dart';
-import 'package:e_commerce_application/data/model/items_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-abstract class ProductDetailsController extends GetxController {}
-
-class ProductDetailsControllerImp extends ProductDetailsController {
-  // CartController cartController = Get.put(CartController());
-  StatusRequist statusRequist = StatusRequist.none;
-  late ItemsModel itemsModel;
-  int countitems = 0;
+class CartController extends GetxController {
   final CartData cartData = CartData(Get.find());
   final MyServices myServices = Get.find();
 
   List<CartModel> data = [];
   double priceorders = 0.0;
   int totalcountitems = 0;
-  @override
-  void onInit() {
-    initalData();
-    super.onInit();
-  }
 
+  StatusRequist statusRequist = StatusRequist.none;
+
+  /// Sepete ürün ekleme
   Future<void> addCart(String itemsid) async {
     statusRequist = StatusRequist.loading;
     update();
@@ -55,6 +45,7 @@ class ProductDetailsControllerImp extends ProductDetailsController {
           margin: const EdgeInsets.all(10),
           duration: const Duration(seconds: 2),
         );
+        refreshPage();
       } else {
         statusRequist = StatusRequist.failure;
       }
@@ -90,6 +81,7 @@ class ProductDetailsControllerImp extends ProductDetailsController {
           margin: const EdgeInsets.all(10),
           duration: const Duration(seconds: 2),
         );
+        refreshPage();
       } else {
         statusRequist = StatusRequist.failure;
       }
@@ -97,6 +89,7 @@ class ProductDetailsControllerImp extends ProductDetailsController {
     update();
   }
 
+  /// Belirli ürünün sepet içindeki adedini getirir
   Future<int?> countItemsInCart(String itemsid) async {
     statusRequist = StatusRequist.loading;
 
@@ -116,29 +109,53 @@ class ProductDetailsControllerImp extends ProductDetailsController {
     }
   }
 
-  initalData() async {
+  /// Sepeti görüntüle ve güncelle
+  Future<void> viewCart() async {
     statusRequist = StatusRequist.loading;
-    itemsModel = Get.arguments['itemsmodel'];
-    countitems = (await countItemsInCart(itemsModel.itemsId!))!;
-    statusRequist = StatusRequist.success;
     update();
-  }
 
-  add() {
-    addCart(itemsModel.itemsId!);
-    countitems++;
-    update();
-  }
+    final response = await cartData.viewCart(
+      myServices.sharedPreferences.getString("id")!,
+    );
+    print("viewCart response: $response");
 
-  remove() {
-    if (countitems > 0) {
-      removeCart(itemsModel.itemsId!);
-      countitems--;
+    statusRequist = handlingData(response);
+    if (statusRequist == StatusRequist.success &&
+        response['status'] == "success") {
+      // ✅ type check
+      if (response['datacart'] is List && response['datacountprice'] is Map) {
+        List responsedata = response['datacart'];
+        Map responsedatacountprice = response['datacountprice'];
+
+        data = responsedata.map((e) => CartModel.fromJson(e)).toList();
+        priceorders =
+            double.tryParse(responsedatacountprice['totalprice'].toString()) ??
+            0.0;
+        totalcountitems =
+            int.tryParse(responsedatacountprice['totalcount'].toString()) ?? 0;
+      }
+    } else {
+      statusRequist = StatusRequist.failure;
     }
     update();
   }
 
-  goToCart() {
-    Get.toNamed(AppRoutes.myCart);
+  /// Sepeti ve sayacı sıfırla
+  void resetvarCart() {
+    totalcountitems = 0;
+    priceorders = 0.0;
+    data.clear();
+  }
+
+  /// Yenile
+  void refreshPage() {
+    resetvarCart();
+    viewCart();
+  }
+
+  @override
+  void onInit() {
+    viewCart();
+    super.onInit();
   }
 }

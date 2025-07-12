@@ -36,7 +36,7 @@ class FavoriteController extends GetxController {
           "28".tr,
           "75".tr,
           snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: AppMyColor.green, // yeşil
+          backgroundColor: AppMyColor.primarycolor, // yeşil
           colorText: AppMyColor.white,
           icon: const Icon(Icons.favorite, color: AppMyColor.white),
           borderRadius: 10,

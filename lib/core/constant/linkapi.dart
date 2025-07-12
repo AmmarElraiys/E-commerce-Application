@@ -25,7 +25,14 @@ class Linkapi {
   //======================================== ItemsPage ==========================
   static const String itemsServer = "$linkServer/items";
   static const String itemspage = "$itemsServer/items.php";
+  static const String itemsSearchPage = "$itemsServer/search.php";
 
+  //======================================== CartPage ==========================
+  static const String cartServer = "$linkServer/cart";
+  static const String addcart = "$cartServer/add.php";
+  static const String deletecart = "$cartServer/delete.php";
+  static const String countitemscart = "$cartServer/getcountitems.php";
+  static const String viewcart = "$cartServer/view.php";
   //======================================== FavoritePage ==========================
   static const String favoriteServer = "$linkServer/favorite";
   static const String addfavorite = "$favoriteServer/add.php";

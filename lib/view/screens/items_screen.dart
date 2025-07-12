@@ -21,13 +21,13 @@ class ItemsScreen extends StatelessWidget {
       child: Scaffold(
         body: ListView(
           children: [
-            TextformfieldSearchWidget(
-              onTap: () {},
-              title: "63".tr,
-              onTapfav: () {
-                controller.goToMyFavorite();
-              },
-            ),
+            // TextformfieldSearchWidget(
+            //   onTap: () {},
+            //   title: "63".tr,
+            //   onTapfav: () {
+            //     controller.goToMyFavorite();
+            //   },
+            // ),
             SizedBox(height: 30),
             ListcategoriesItemsWidget(),
             GetBuilder<ItemsControllerImp>(

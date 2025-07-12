@@ -85,9 +85,11 @@ class MyTranslation extends Translations {
       "75": "Item added to favorites",
       "76": "Description",
       "77": "Choose Color",
-      "78": "Add to Cart",
+      "78": "	Go to Cart",
       "79": "Added to Cart",
       "80": "The product has been successfully added.",
+      "81": "The product has been added to the cart successfully.",
+      "82": "The item has been removed from the cart successfully.",
     },
     "ar": {
       "1": "اختر اللغة",
@@ -172,9 +174,11 @@ class MyTranslation extends Translations {
       "75": "تمت إضافة العنصر إلى المفضلة",
       "76": "الوصف",
       "77": "اختر اللون",
-      "78": "أضف إلى السلة",
+      "78": "اذهب إلى السلة",
       "79": "تمت الإضافة إلى السلة",
       "80": "تمت إضافة المنتج بنجاح.",
+      "81": " تمت إضافة المنتج الى السلة بنجاح.",
+      "82": "تمت إزالة العنصر من السلة بنجاح",
     },
   };
 }

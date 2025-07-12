@@ -128,10 +128,16 @@ class ItemGridWidget extends GetView<ItemsControllerImp> {
                             onPressed: () {
                               if (controller.isFavorite[itemsModel.itemsId] ==
                                   "1") {
-                                controller.setFavorite(itemsModel.itemsId, "0");
+                                controller.setFavorite(
+                                  itemsModel.itemsId as int,
+                                  "0",
+                                );
                                 controller.removeFavorite(itemsModel.itemsId!);
                               } else {
-                                controller.setFavorite(itemsModel.itemsId, "1");
+                                controller.setFavorite(
+                                  itemsModel.itemsId as int,
+                                  "1",
+                                );
                                 controller.addFavorite(itemsModel.itemsId!);
                               }
                             },

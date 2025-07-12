@@ -10,6 +10,7 @@ import 'package:e_commerce_application/view/screens/auth/signup_screen.dart';
 import 'package:e_commerce_application/view/screens/auth/password/verifiycode_screen.dart';
 import 'package:e_commerce_application/view/screens/auth/success_signup_screen.dart';
 import 'package:e_commerce_application/view/screens/auth/verifiycode_signup_screen.dart';
+import 'package:e_commerce_application/view/screens/cart_screen.dart';
 import 'package:e_commerce_application/view/screens/home/home_screen.dart';
 import 'package:e_commerce_application/view/screens/items_screen.dart';
 import 'package:e_commerce_application/view/screens/language.dart';
@@ -24,7 +25,7 @@ List<GetPage<dynamic>>? routes = [
     page: () => const Language(),
     middlewares: [Mymiddleware()],
   ),
-  // GetPage(name: "/", page: () => const ProductDetailsScreen()),
+  // GetPage(name: "/", page: () => const CartScreen()),
   GetPage(name: AppRoutes.login, page: () => const LoginScreen()),
   GetPage(name: AppRoutes.onBoarding, page: () => const OnBoardingScreen()),
   GetPage(name: AppRoutes.signup, page: () => const SignupScreen()),
@@ -48,4 +49,5 @@ List<GetPage<dynamic>>? routes = [
     page: () => const ProductDetailsScreen(),
   ),
   GetPage(name: AppRoutes.myfavorite, page: () => const MyfavoriteScreen()),
+  GetPage(name: AppRoutes.myCart, page: () => const CartScreen()),
 ];

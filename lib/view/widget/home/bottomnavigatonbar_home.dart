@@ -9,9 +9,9 @@ class BottomnavigatonbarHome extends GetView<HomeScreenControllerImp> {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      height: 80,
+      height: 100,
       shape: CircularNotchedRectangle(),
-      notchMargin: 13,
+      notchMargin: 14,
       child: Row(
         children: [
           ...List.generate(controller.listPage.length + 1, (index) {
