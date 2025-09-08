@@ -1,27 +1,15 @@
 import 'package:e_commerce_application/controller/settings/settings_controller.dart';
 import 'package:e_commerce_application/core/constant/color_app.dart';
+import 'package:e_commerce_application/core/constant/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'dart:io';
 
 class SettingsScreen extends GetView<SettingsController> {
   const SettingsScreen({super.key});
 
-  Future<void> _rateApp() async {
-    final url =
-        Platform.isAndroid
-            ? 'https://play.google.com/store/apps/details?id=com.example.yourapp'
-            : 'https://apps.apple.com/app/id000000000'; // App Store linki
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url));
-    } else {
-      Get.snackbar('Error', 'Could not open store page');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(() => SettingsController());
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(title: Text('Settings'.tr), centerTitle: true),
@@ -41,7 +29,7 @@ class SettingsScreen extends GetView<SettingsController> {
                   Icons.language,
                   color: AppMyColor.primarycolor,
                 ),
-                title: Text('Language'.tr, style: theme.textTheme.titleMedium),
+                title: Text('68'.tr, style: theme.textTheme.titleMedium),
                 trailing: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   decoration: BoxDecoration(
@@ -113,29 +101,37 @@ class SettingsScreen extends GetView<SettingsController> {
 
               ListTile(
                 leading: const Icon(Icons.lock, color: Colors.deepOrange),
-                title: Text(
-                  'Change Password',
-                  style: theme.textTheme.titleMedium,
-                ),
+                title: Text('69'.tr, style: theme.textTheme.titleMedium),
                 trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                 onTap: () {
-                  Get.toNamed('/change-password');
+                  Get.toNamed(AppRoutes.forgetpass);
                 },
               ),
               const Divider(indent: 16, endIndent: 16),
 
               ListTile(
                 leading: const Icon(Icons.star_rate, color: Colors.amber),
-                title: Text('Rate App', style: theme.textTheme.titleMedium),
+                title: Text('70'.tr, style: theme.textTheme.titleMedium),
                 trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-                onTap: _rateApp,
+                onTap: () {},
               ),
               const Divider(indent: 16, endIndent: 16),
 
               ListTile(
                 leading: const Icon(Icons.exit_to_app, color: Colors.redAccent),
-                title: Text('Exit App', style: theme.textTheme.titleMedium),
-                onTap: () => exit(0),
+                title: Text('71'.tr, style: theme.textTheme.titleMedium),
+                onTap: () {
+                  Get.defaultDialog(
+                    title: '73'.tr,
+                    middleText: '72'.tr,
+                    textConfirm: '58'.tr,
+                    textCancel: '57'.tr,
+                    confirmTextColor: Colors.white,
+                    onConfirm: () {
+                      controller.goToLogin();
+                    },
+                  );
+                },
               ),
               const SizedBox(height: 16),
             ],

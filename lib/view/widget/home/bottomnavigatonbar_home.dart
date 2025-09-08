@@ -9,22 +9,22 @@ class BottomnavigatonbarHome extends GetView<HomeScreenControllerImp> {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      height: 80,
+      height: 100,
       shape: CircularNotchedRectangle(),
-      notchMargin: 15,
+      notchMargin: 14,
       child: Row(
         children: [
           ...List.generate(controller.listPage.length + 1, (index) {
             int i = index > 2 ? index - 1 : index;
             return index == 2
-                ? Spacer()
+                ? const Expanded(child: SizedBox()) // fab boşluğu için
                 : BottomnavigationbarWidget(
                   onPressed: () {
                     controller.changePage(i);
                   },
                   title: controller.titlelistPage[i],
                   icon: controller.iconListPage[i],
-                  active: controller.currentPage == i ? true : false,
+                  active: controller.currentPage == i,
                 );
           }),
         ],

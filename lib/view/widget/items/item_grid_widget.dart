@@ -121,6 +121,7 @@ class ItemGridWidget extends GetView<ItemsControllerImp> {
                     builder:
                         (controller) => Container(
                           decoration: BoxDecoration(
+                            // ignore: deprecated_member_use
                             color: Colors.red.withOpacity(0.1),
                             shape: BoxShape.circle,
                           ),

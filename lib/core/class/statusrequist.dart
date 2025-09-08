@@ -5,4 +5,5 @@ enum StatusRequist {
   failure,
   serverfailure,
   offlinefailure,
+  noInternet,
 }

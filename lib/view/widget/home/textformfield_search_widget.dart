@@ -6,6 +6,8 @@ class TextformfieldSearchWidget extends StatelessWidget {
   final void Function()? onTap;
   final void Function()? onTapfav;
   final void Function()? onTapSearch;
+  final void Function(String)? onchange;
+  final TextEditingController myController;
   final String title;
   const TextformfieldSearchWidget({
     super.key,
@@ -13,6 +15,8 @@ class TextformfieldSearchWidget extends StatelessWidget {
     required this.onTapfav,
     required this.title,
     this.onTapSearch,
+    this.onchange,
+    required this.myController,
   });
 
   @override
@@ -26,6 +30,8 @@ class TextformfieldSearchWidget extends StatelessWidget {
               elevation: 2,
               borderRadius: BorderRadius.circular(12),
               child: TextFormField(
+                controller: myController,
+                onChanged: onchange,
                 decoration: InputDecoration(
                   prefixIcon: IconButton(
                     onPressed: onTapSearch,

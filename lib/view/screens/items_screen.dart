@@ -1,13 +1,14 @@
 import 'package:e_commerce_application/controller/favorite_controller.dart';
+// import 'package:e_commerce_application/controller/home/home_controller.dart';
 import 'package:e_commerce_application/controller/items_controller.dart';
 import 'package:e_commerce_application/core/class/handlingdataview.dart';
 import 'package:e_commerce_application/data/model/items_model.dart';
-import 'package:e_commerce_application/view/widget/home/textformfield_search_widget.dart';
+// import 'package:e_commerce_application/view/widget/home/textformfield_search_widget.dart';
 import 'package:e_commerce_application/view/widget/items/item_grid_widget.dart';
 import 'package:e_commerce_application/view/widget/items/listcategories_items_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
+// import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/instance_manager.dart';
 
 class ItemsScreen extends StatelessWidget {
@@ -15,19 +16,25 @@ class ItemsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ItemsControllerImp controller = Get.put(ItemsControllerImp());
+    // HomeControllerImp homeControllerImp = Get.put(HomeControllerImp());
+    // ItemsControllerImp controller = Get.put(ItemsControllerImp());
+    Get.put(ItemsControllerImp());
     FavoriteController favoriteController = Get.put(FavoriteController());
     return Container(
       child: Scaffold(
         body: ListView(
           children: [
-            TextformfieldSearchWidget(
-              onTap: () {},
-              title: "63".tr,
-              onTapfav: () {
-                controller.goToMyFavorite();
-              },
-            ),
+            // TextformfieldSearchWidget(
+            //   onTap: () {},
+            //   title: "63".tr,
+            //   onTapfav: () {
+            //     controller.goToMyFavorite();
+            //   },
+            //   onTapSearch: () {
+            //     homeControllerImp.onSearch();
+            //   },
+            //   myController: homeControllerImp.search!,
+            // ),
             SizedBox(height: 30),
             ListcategoriesItemsWidget(),
             GetBuilder<ItemsControllerImp>(

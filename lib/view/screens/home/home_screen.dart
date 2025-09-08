@@ -20,7 +20,9 @@ class HomeScreen extends StatelessWidget {
               ),
 
               elevation: 5,
-              onPressed: () {},
+              onPressed: () {
+                controller.goToCart();
+              },
               child: Icon(Icons.shopping_bag_outlined),
             ),
             floatingActionButtonLocation:
