@@ -95,7 +95,9 @@ class HomeControllerImp extends HomeController {
   @override
   void onInit() {
     search = TextEditingController();
-    itemsModel = Get.arguments['itemsmodel'];
+    if (Get.arguments != null && Get.arguments['itemsmodel'] != null) {
+      itemsModel = Get.arguments['itemsmodel'];
+    }
     intialData();
     getData();
     super.onInit();

@@ -1,7 +1,8 @@
+// import 'package:e_commerce_application/controller/home/home_controller.dart';
 import 'package:e_commerce_application/controller/myfavorite_controller.dart';
 import 'package:e_commerce_application/core/class/handlingdataview.dart';
 import 'package:e_commerce_application/data/model/myfavorite_model.dart';
-import 'package:e_commerce_application/view/widget/home/textformfield_search_widget.dart';
+// import 'package:e_commerce_application/view/widget/home/textformfield_search_widget.dart';
 import 'package:e_commerce_application/view/widget/myfavorite/myfavorite_item_grid_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class MyfavoriteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(MyfavoriteControllerImp());
+    // HomeControllerImp homeControllerImp = Get.put(HomeControllerImp());
     return Scaffold(
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 10),
@@ -23,6 +25,10 @@ class MyfavoriteScreen extends StatelessWidget {
                   //   onTap: () {},
                   //   title: "59".tr,
                   //   onTapfav: () {},
+                  //   myController: homeControllerImp.search!,
+                  //   onTapSearch: () {
+                  //     homeControllerImp.onSearch();
+                  //   },
                   // ),
                   SizedBox(height: 10),
                   Handlingdataview(

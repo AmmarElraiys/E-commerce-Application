@@ -5,6 +5,7 @@ import 'package:e_commerce_application/core/constant/linkapi.dart';
 import 'package:e_commerce_application/core/functions/tarnslate_database.dart';
 
 import 'package:e_commerce_application/data/model/myfavorite_model.dart';
+import 'package:e_commerce_application/view/widget/myfavorite/appmyfavorite_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

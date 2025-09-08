@@ -121,6 +121,7 @@ class ItemGridWidget extends GetView<ItemsControllerImp> {
                     builder:
                         (controller) => Container(
                           decoration: BoxDecoration(
+                            // ignore: deprecated_member_use
                             color: Colors.red.withOpacity(0.1),
                             shape: BoxShape.circle,
                           ),
@@ -128,16 +129,10 @@ class ItemGridWidget extends GetView<ItemsControllerImp> {
                             onPressed: () {
                               if (controller.isFavorite[itemsModel.itemsId] ==
                                   "1") {
-                                controller.setFavorite(
-                                  itemsModel.itemsId as int,
-                                  "0",
-                                );
+                                controller.setFavorite(itemsModel.itemsId, "0");
                                 controller.removeFavorite(itemsModel.itemsId!);
                               } else {
-                                controller.setFavorite(
-                                  itemsModel.itemsId as int,
-                                  "1",
-                                );
+                                controller.setFavorite(itemsModel.itemsId, "1");
                                 controller.addFavorite(itemsModel.itemsId!);
                               }
                             },

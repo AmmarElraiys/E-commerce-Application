@@ -118,7 +118,9 @@ class ProductDetailsControllerImp extends ProductDetailsController {
 
   initalData() async {
     statusRequist = StatusRequist.loading;
-    itemsModel = Get.arguments['itemsmodel'];
+    if (Get.arguments != null && Get.arguments['itemsmodel'] != null) {
+      itemsModel = Get.arguments['itemsmodel'];
+    }
     countitems = (await countItemsInCart(itemsModel.itemsId!))!;
     statusRequist = StatusRequist.success;
     update();
